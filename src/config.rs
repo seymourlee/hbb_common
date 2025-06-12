@@ -227,7 +227,7 @@ pub struct Config2 {
     pub options: HashMap<String, String>,
 }
 
-#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+#[derive(PartialEq, Eq, Debug, Clone, Serialize, Deserialize)]
 pub struct Resolution {
     pub w: i32,
     pub h: i32,
@@ -401,7 +401,7 @@ pub struct PeerInfoSerde {
     pub platform: String,
 }
 
-#[derive(Debug, Default, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(PartialEq, Eq, Debug, Default, Serialize, Deserialize, Clone)]
 pub struct TransferSerde {
     #[serde(default, deserialize_with = "deserialize_vec_string")]
     pub write_jobs: Vec<String>,

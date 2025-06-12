@@ -74,11 +74,10 @@ impl Stream {
     pub async fn connect_websocket(
         url: impl AsRef<str>,
         local_addr: Option<SocketAddr>,
-        proxy_conf: Option<&config::Socks5Server>,
         timeout_ms: u64,
     ) -> ResultType<Self> {
         let ws_stream =
-            websocket::WsFramedStream::new(url, local_addr, proxy_conf, timeout_ms).await?;
+            websocket::WsFramedStream::new(url, local_addr, timeout_ms).await?;
         log::debug!("WebSocket connection established");
         Ok(Self::WebSocket(ws_stream))
     }
